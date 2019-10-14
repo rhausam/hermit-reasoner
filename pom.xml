@@ -44,10 +44,10 @@
     </description>
 
     <scm>
-        <connection>scm:svn:svn://svn.cs.ox.ac.uk/krr/2008/HermiT/trunk/</connection>
-        <developerConnection>scm:svn:svn://svn.cs.ox.ac.uk/krr/2008/HermiT/trunk/</developerConnection>
+        <connection>scm:git:https://github.com/rhausam/hermit-reasoner.git</connection>
+        <developerConnection>scm:git:https://github.com/rhausam/hermit-reasoner.git</developerConnection>
         <tag>HEAD</tag>
-        <url>svn://svn.cs.ox.ac.uk/krr/2008/HermiT/trunk/</url>
+        <url>https://github.com/rhausam/hermit-reasoner.git</url>
     </scm>
 
     <licenses>
@@ -169,10 +169,11 @@
                     <doCheck>false</doCheck>
                     <doUpdate>false</doUpdate>
                     <providerImplementations>
-                        <svn>javasvn</svn>
+                        <svn>maven-scm-provider-gitexe</svn>
                     </providerImplementations>
                 </configuration>
                 <dependencies>
+                    <!-- 
                     <dependency>
                         <groupId>com.google.code.maven-scm-provider-svnjava</groupId>
                         <artifactId>maven-scm-provider-svnjava</artifactId>
@@ -183,6 +184,7 @@
                         <artifactId>svnkit</artifactId>
                         <version>1.8.5</version>
                     </dependency>
+                     -->
                 </dependencies>
             </plugin>
             <plugin>
@@ -323,6 +325,7 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+                    <!--
                     <execution>
                         <phase>install</phase>
                         <configuration>
@@ -331,13 +334,21 @@
                                 <input message="Enter a user name for linux:" addproperty="username" defaultvalue="${user.name}"/>
                                 <input message="Enter ${username}'s password on linux: " addproperty="password"/>
                                 <sshexec host="linux.cs.ox.ac.uk" username="${username}" password="${password}" command="mkdir /fs/website/research/themes/isg/tools/HermiT/download/${project.version}/" trust="yes"/>
+                                -->
                                 <!-- SCP the assembly of the entrie code project. -->
+                                <!--
                                 <scp file="${project.build.directory}/${project.artifactId}-${project.version}-src.zip" localTofile="${project.name}.zip" todir="${username}:${password}@linux.cs.ox.ac.uk:/fs/website/research/themes/isg/tools/HermiT/download/${project.version}/" trust="yes"/>
+                                -->
                                 <!-- SCP the Protege plugin jar. -->
+                                <!--
                                 <scp file="${project.build.directory}/${project.artifactId}-${project.version}-protege-assembly.jar" todir="${username}:${password}@linux.cs.ox.ac.uk:/fs/website/research/themes/isg/tools/HermiT/download/${project.version}/" trust="yes"/>
+                                -->
                                 <!-- SCP the README file. -->
+                                <!--
                                 <scp file="${project.basedir}/README.txt" todir="${username}:${password}@linux.cs.ox.ac.uk:/fs/website/research/themes/isg/tools/HermiT/download/${project.version}/" trust="yes"/>
+                                -->
                                 <!-- SCP the generated update.properties file for Protege. -->
+                                <!--
                                 <scp file="${project.build.directory}/update.properties" todir="${username}:${password}@linux.cs.ox.ac.uk:/fs/website/research/themes/isg/tools/HermiT/protege-4-1-beta-update/" trust="yes"/>
                                 <sshexec host="linux.cs.ox.ac.uk" username="${username}" password="${password}" command="rm /fs/website/research/themes/isg/tools/HermiT/download/current/HermiT.zip" trust="yes"/>
                                 <sshexec host="linux.cs.ox.ac.uk" username="${username}" password="${password}" command="ln -s  /fs/website/research/themes/isg/tools/HermiT/download/${project.version}/HermiT.zip /fs/website/research/themes/isg/tools/HermiT/download/current/HermiT.zip" trust="yes"/>
@@ -347,6 +358,7 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+                    -->
                 </executions>
                 <dependencies>
                     <dependency>
@@ -428,7 +440,7 @@
         <dependency>
             <groupId>net.sourceforge.owlapi</groupId>
             <artifactId>owlapi-distribution</artifactId>
-            <version>4.2.8</version>
+            <version>4.5.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ws.commons.axiom</groupId>
